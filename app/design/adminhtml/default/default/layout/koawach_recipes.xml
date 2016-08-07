@@ -15,17 +15,16 @@
       <action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
     </reference>
   </default>
-  <adminhtml_recipes_index>
+
+  <recipes_adminhtml_recipes_index>
       <reference name="content">
           <block type="recipes/adminhtml_recipes" name="recipes" />
       </reference>
-  </adminhtml_recipes_index>
+  </recipes_adminhtml_recipes_index>
 
-  <!-- <adminhtml_recipes_edit>
-      <reference name="head">
-          <action method="setCanLoadTinyMce">
-              <flag>1</flag>
-          </action>
-      </reference>
-  </adminhtml_recipes_edit> -->
+  <recipes_adminhtml_recipes_productgrid>
+    <block type="core/text_list" name="root">
+        <block type="recipes/adminhtml_recipes_edit_tab_products" name="recipes.edit.tab.products"/>
+    </block>
+  </recipes_adminhtml_recipes_productgrid>
 </layout>

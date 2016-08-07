@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Koawach_Recipes>
-            <version>0.1.0</version>
+            <version>0.1.5</version>
         </Koawach_Recipes>
     </modules>
     <global>

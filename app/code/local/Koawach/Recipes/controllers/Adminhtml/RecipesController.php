@@ -3,19 +3,12 @@ class Koawach_Recipes_Adminhtml_RecipesController extends Mage_Adminhtml_Control
 
   protected function _initAction() {
       $this->loadLayout()
-              ->_setActiveMenu('recipes/recipes');
+              ->_setActiveMenu('recipes');
       return $this;
   }
 
   public function indexAction() {
-    // mage::log('hola',null,'RECIPEcontroller.log');
-    // $this->_initAction()
-            // ->renderLayout();
-
-    $this->loadLayout()->_addContent(
-        $this->getLayout()->createBlock('recipes/adminhtml_recipes')
-      )->renderLayout();
-    return $this;
+    $this->_initAction()->renderLayout();
   }
 
   public function editAction() {
@@ -35,7 +28,8 @@ class Koawach_Recipes_Adminhtml_RecipesController extends Mage_Adminhtml_Control
           $this->_setActiveMenu('recipes/recipes');
 
           $this->getLayout()->getBlock('head')->setCanLoadExtJs(true);
-          $this->_addContent($this->getLayout()->createBlock('recipes/adminhtml_recipes_edit'));
+          $this->_addContent($this->getLayout()->createBlock('recipes/adminhtml_recipes_edit'))
+            ->_addLeft($this->getLayout()->createBlock('recipes/adminhtml_recipes_edit_tabs'));;
 
           $this->renderLayout();
       } else {
@@ -53,66 +47,23 @@ class Koawach_Recipes_Adminhtml_RecipesController extends Mage_Adminhtml_Control
       $id = $this->getRequest()->getParam('id');
       $model = Mage::getModel('recipes/recipe');
 
+      // var_dump($data);
+      // die('..');
+
       $productIds = array();
-      if (isset($data['sproducts'])) {
-          if (is_string($data['sproducts'])) {
-              parse_str($data['sproducts'], $productIds);
-              $productIds = array_unique(array_keys($productIds));
+      if (isset($data['products'])) {
+          if (is_array($data['products'])) {
+            $data['product_ids'] = implode(',', $data['products']);
           }
-          $data['product_ids'] = implode(',', $productIds);
       }
 
-      // $urlRewrite = $data['rewrite_request_path'] ? $data['rewrite_request_path'] : $data['name'];
-      // $urlRewrite = strtolower(trim($urlRewrite));
-      // $urlRewrite = Mage::helper('storelocator')->characterSpecial($urlRewrite);
-      //
-      // $data['rewrite_request_path'] = $urlRewrite;
-      $model->setData($data)
-              // ->setStoreId($store)
-              ->setData('recipe_id', $id);
+      $model->setData($data)->setData('recipe_id', $id);
       try {
           $model->save();
           $id = $model->getId();
 
-          // $stores = Mage::app()->getStores();
-          // foreach ($stores as $store) {
-          //     $model->setStoreId($store->getStoreId())
-          //             ->updateUrlKey();
-          // }
-
           Mage::getSingleton('adminhtml/session')->addSuccess($this->__('Recipe was successfully saved'));
           Mage::getSingleton('adminhtml/session')->setFormData(false);
-          // Mage::helper('storelocator/image')->saveImageStore($data['storelocator_images'], $data['storelocator_values'], $id);
-          // if ($id == null) {
-          //     if (!isset($data['radio'])) {
-          //         $data['radio'] = 1;
-          //     }
-          //
-          //
-          //     if (isset($_FILES['image_icon']) && $_FILES['image_icon']['name']) {
-          //         Mage::helper('storelocator')->saveIcon($_FILES['image_icon'], $model->getCollection()->getLastItem()->getId());
-          //     }
-          // } else {
-          //
-          //     if (isset($_FILES['image_icon']) && $_FILES['image_icon']['name']) {
-          //         Mage::helper('storelocator')->saveIcon($_FILES['image_icon'], $id);
-          //     }
-          // }
-          //
-          // if (isset($data['tags_store'])) {
-          //     $tag = explode(",", $data['tags_store']);
-          //     $tags = array();
-          //     foreach ($tag as $item) {
-          //         $itemTag = trim($item);
-          //         if ($itemTag)
-          //             $tags[] = $itemTag;
-          //     }
-          //     Mage::helper('storelocator')->saveTagToStore($tags, $model->getId());
-          // }
-          //
-          // if ($deleteIcon) {
-          //     Mage::helper('storelocator')->deleteImageIcon($model->getId(), $data['image_icon']);
-          // }
 
           if ($this->getRequest()->getParam('back')) {
               $this->_redirect('*/*/edit', array('id' => $model->getId()));
@@ -130,5 +81,12 @@ class Koawach_Recipes_Adminhtml_RecipesController extends Mage_Adminhtml_Control
 
     Mage::getSingleton('adminhtml/session')->addError($this->__('Unable to find recipe to save'));
     $this->_redirect('*/*/');
+  }
+
+  public function productgridAction(){
+      $this->loadLayout();
+      $this->getLayout()->getBlock('recipes.edit.tab.products')
+           ->setStoreProducts($this->getRequest()->getPost('recipes_products', null));
+      $this->renderLayout();
   }
 }
