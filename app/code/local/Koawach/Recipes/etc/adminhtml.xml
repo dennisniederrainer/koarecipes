@@ -26,11 +26,4 @@
             </admin>
         </resources>
     </acl>
-    <layout>
-      <updates>
-        <recipes>
-          <file>koawach_recipes.xml</file>
-        </recipes>
-      </updates>
-    </layout>
 </config>

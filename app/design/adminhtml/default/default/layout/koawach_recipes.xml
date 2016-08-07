@@ -1,22 +1,31 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
+  <default>
+    <reference name="head">
+      <action method="setCanLoadExtJs"><flag>1</flag></action>
+      <action method="setCanLoadTinyMce"><flag>1</flag></action>
+      <action method="addJs"><script>mage/adminhtml/variables.js</script></action>
+      <action method="addJs"><script>mage/adminhtml/wysiwyg/widget.js</script></action>
+      <action method="addJs"><script>lib/flex.js</script></action>
+      <action method="addJs"><script>lib/FABridge.js</script></action>
+      <action method="addJs"><script>mage/adminhtml/flexuploader.js</script></action>
+      <action method="addJs"><script>mage/adminhtml/browser.js</script></action>
+      <action method="addJs"><script>prototype/window.js</script></action>
+      <action method="addJs"><script>prototype/prototype.js</script></action>
+      <action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+    </reference>
+  </default>
+  <adminhtml_recipes_index>
+      <reference name="content">
+          <block type="recipes/adminhtml_recipes" name="recipes" />
+      </reference>
+  </adminhtml_recipes_index>
 
-    <koawach_recipes_index>
-        <reference name="content">
-            <block type="recipes/adminhtml_recipes_grid" name="recipes_list" />
-        </reference>
-    </koawach_recipes_index>
-
-    <koawach_recipes_new>
-        <reference name="content">
-            <block type="recipes/adminhtml_recipes_new" name="recipes_new" />
-        </reference>
-    </koawach_recipes_new>
-
-    <koawach_recipes_edit>
-        <reference name="content">
-            <block type="recipes/koawach_recipes_edit" name="recipes_edit" />
-        </reference>
-    </koawach_recipes_edit>
-
+  <!-- <adminhtml_recipes_edit>
+      <reference name="head">
+          <action method="setCanLoadTinyMce">
+              <flag>1</flag>
+          </action>
+      </reference>
+  </adminhtml_recipes_edit> -->
 </layout>

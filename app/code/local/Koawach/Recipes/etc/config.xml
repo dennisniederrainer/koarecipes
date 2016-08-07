@@ -14,9 +14,9 @@
             <recipes_mysql4>
                 <class>Koawach_Recipes_Model_Mysql4</class>
                 <entities>
-                    <recipes>
+                    <recipe>
                         <table>recipes</table>
-                    </recipes>
+                    </recipe>
                 </entities>
             </recipes_mysql4>
         </models>
@@ -51,6 +51,24 @@
           </recipes>
         </blocks>
     </global>
+    <adminhtml>
+      <layout>
+        <updates>
+          <recipes>
+            <file>koawach_recipes.xml</file>
+          </recipes>
+        </updates>
+      </layout>
+      <routers>
+        <recipes>
+          <use>admin</use>
+          <args>
+            <module>Koawach_Recipes</module>
+            <frontName>recipes</frontName>
+          </args>
+        </recipes>
+      </routers>
+    </adminhtml>
     <admin>
       <routers>
         <recipes>

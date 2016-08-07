@@ -1,5 +1,5 @@
 <?php
-class Koawach_Recipes_Block_Adminhtml_Recipe_Grid extends Mage_Adminhtml_Block_Widget_Grid {
+class Koawach_Recipes_Block_Adminhtml_Recipes_Grid extends Mage_Adminhtml_Block_Widget_Grid {
 
   public function __construct() {
     parent::__construct();
@@ -37,9 +37,9 @@ class Koawach_Recipes_Block_Adminhtml_Recipe_Grid extends Mage_Adminhtml_Block_W
         return $this->fetchView($templateName);
     }
     public function getRowUrl($row) {
-    	return $this->getUrl('koawach_recipe/adminhtml_recipe_edit', array())."id/1"; //.$row->getRecipeId();
+    	return $this->getUrl('recipes/adminhtml_recipes/edit', array())."id/".$row->getRecipeId();
     }
     public function getNewUrl() {
-		    return $this->getUrl('koawach_recipe/adminhtml_recipe_new', array());
+		    return $this->getUrl('recipes/adminhtml_recipes/new', array());
     }
 }
