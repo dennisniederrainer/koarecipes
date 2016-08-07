@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Koawach_Recipes>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Koawach_Recipes>
+    </modules>
+</config>
