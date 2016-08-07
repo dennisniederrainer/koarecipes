@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <koawach_recipes_index>
+        <reference name="content">
+            <block type="recipes/adminhtml_recipes_grid" name="recipes_list" />
+        </reference>
+    </koawach_recipes_index>
+
+    <koawach_recipes_new>
+        <reference name="content">
+            <block type="recipes/adminhtml_recipes_new" name="recipes_new" />
+        </reference>
+    </koawach_recipes_new>
+
+    <koawach_recipes_edit>
+        <reference name="content">
+            <block type="recipes/koawach_recipes_edit" name="recipes_edit" />
+        </reference>
+    </koawach_recipes_edit>
+
+</layout>

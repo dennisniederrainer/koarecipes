@@ -1,6 +1,6 @@
 <?php
 
-die('springt.');
+// die('springt.');
 $installer = $this;
 
 $installer->startSetup();

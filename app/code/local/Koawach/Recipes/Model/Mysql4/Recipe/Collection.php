@@ -5,7 +5,7 @@ class Koawach_Recipes_Model_Mysql4_Recipe_Collection extends Mage_Core_Model_Mys
     public function _construct() {
         parent::_construct();
 
-        $this->_init('recipes/recipes');
+        $this->_init('recipes/recipe');
     }
 
 }

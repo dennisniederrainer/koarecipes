@@ -45,5 +45,21 @@
                 <class>Koawach_Recipes_Helper</class>
             </recipes>
         </helpers>
+        <blocks>
+          <recipes>
+            <class>Koawach_Recipes_Block</class>
+          </recipes>
+        </blocks>
     </global>
+    <admin>
+      <routers>
+        <recipes>
+          <use>admin</use>
+          <args>
+            <module>Koawach_Recipes</module>
+            <frontName>recipes</frontName>
+          </args>
+        </recipes>
+      </routers>
+    </admin>
 </config>

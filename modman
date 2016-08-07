@@ -1,2 +1,3 @@
 app/etc/modules/Koawach_Recipes.xml       app/etc/modules/Koawach_Recipes.xml
 app/code/local/Koawach/Recipes            app/code/local/Koawach/Recipes
+app/design/adminhtml/default/default/layout/koawach_recipes.xml   app/design/adminhtml/default/default/layout/koawach_recipes.xml
